@@ -32,7 +32,7 @@ class _SignInSCreenState extends State<SignInSCreen> {
                     style: TextStyle(fontSize: 24),
                   ),
                   tSizedboxh40,
-                  Text("SignUp"),
+                  const Text("SignUp"),
                   TextFormField(
                     controller: auth.usernameController,
                     validator: (value) {

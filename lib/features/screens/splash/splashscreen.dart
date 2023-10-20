@@ -4,12 +4,12 @@ import 'package:firebase_chat_app/features/screens/login/loginscreen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
-  FirebaseAuth _auth = FirebaseAuth.instance;
+ final FirebaseAuth _auth = FirebaseAuth.instance;
   SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 4), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => StreamBuilder<User?>(
                 stream: _auth.authStateChanges(),

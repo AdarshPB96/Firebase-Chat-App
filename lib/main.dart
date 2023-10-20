@@ -1,3 +1,4 @@
+import 'package:firebase_chat_app/features/provider/chat_provider.dart';
 import 'package:firebase_chat_app/features/provider/login_provider.dart';
 import 'package:firebase_chat_app/features/screens/splash/splashscreen.dart';
 import 'package:firebase_chat_app/firebase_options.dart';
@@ -16,10 +17,15 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context)  {
+  Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => LogInPro(),)
+        ChangeNotifierProvider(
+          create: (context) => LogInPro(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ChatProvider(),
+        )
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -28,7 +34,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home:  SplashScreen()),
+          home: SplashScreen()),
     );
   }
 }

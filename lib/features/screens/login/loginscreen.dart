@@ -2,15 +2,16 @@ import 'package:firebase_chat_app/constants/size.dart';
 import 'package:firebase_chat_app/domain/auth/firebase_auth.dart';
 import 'package:firebase_chat_app/features/provider/login_provider.dart';
 import 'package:firebase_chat_app/features/screens/login/widgets/widgets.dart';
-import 'package:firebase_chat_app/features/signIn/signIn_screen.dart';
+import 'package:firebase_chat_app/features/screens/signIn/signIn_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final Size tSize = MediaQuery.of(context).size;
     Firebaseauth auth = Firebaseauth();
     return SafeArea(
       child: Scaffold(
@@ -23,6 +24,13 @@ class LoginScreen extends StatelessWidget {
                 "Firebase Chat",
                 style: TextStyle(fontSize: 24),
                 textAlign: TextAlign.center,
+              ),
+              tSizedboxh30,
+              SizedBox(
+                height: tSize.height * 0.24,
+                width: tSize.width * 0.56,
+                child: Lottie.asset("assets/Animation - 1697218268859.json",
+                    fit: BoxFit.cover),
               ),
               tSizedboxh40,
               const Text("User LogIn"),
@@ -70,7 +78,11 @@ class LoginScreen extends StatelessWidget {
                         builder: (context) => SignInSCreen(),
                       ));
                 },
-              )
+              ),
+              tSizedboxh20,
+              GoogleSignInButton(onPressed: () {
+                auth.signInWithGoogle(context);
+              })
             ],
           ),
         ),
